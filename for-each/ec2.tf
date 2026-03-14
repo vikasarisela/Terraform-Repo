@@ -1,10 +1,10 @@
 resource "aws_instance" "terraform" {
-    count = 10
+    for_each = var.instances
     ami = "ami-0220d79f3f480ecf5"
-    instance_type = "t3.micro"
+    instance_type = each.value
     vpc_security_group_ids = [aws_security_group.allow_all.id]
     tags = {
-        Name = var.instances[count.index]
+        Name = each.key
         Terraform = "true"
     }
 }

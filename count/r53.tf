@@ -1,9 +1,29 @@
+# resource "aws_route53_record" "roboshop" {
+#   count = 2
+#   zone_id = "${var.zone_id}"
+#   name    = "${var.instances[count.index]}.${var.domain_name}"
+#   type    = "A"
+#   ttl     = 1
+
+#   if name == "frontend.cloudskills.fun"
+#   {
+#   records = [aws_instances.terraform[count.index].private_ip]
+# } else
+# {
+#     records = [aws_instances.terraform[count.index].private_ip]
+
+# }
+#   allow_overwrite = true
+# }
+
 resource "aws_route53_record" "roboshop" {
-  count = 2
-  zone_id = "${var.zone_id}"
+  count   = 2
+  zone_id = var.zone_id
   name    = "${var.instances[count.index]}.${var.domain_name}"
   type    = "A"
   ttl     = 1
-  records = [aws_instances.terraform[count.index].private_ip]
+
+  records = var.instances[count.index] == "frontend" ? [aws_instance.terraform[count.index].public_ip] : [aws_instance.terraform[count.index].private_ip]
+
   allow_overwrite = true
 }
