@@ -17,13 +17,13 @@
 # }
 
 resource "aws_route53_record" "roboshop" {
-  count   = length(var.instances)
-  zone_id = var.zone_id
-  name    = "${var.instances[count.index]}.${var.domain_name}"
+  for_each = aws_instance.terraform
+   zone_id = var.zone_id
+  name    = "${each.key}.${var.domain_name}"
   type    = "A"
   ttl     = 1
 
-  records = var.instances[count.index] == "frontend" ? [aws_instance.terraform[count.index].public_ip] : [aws_instance.terraform[count.index].private_ip]
+  records = [each.value.private_ip]
 
   allow_overwrite = true
 }

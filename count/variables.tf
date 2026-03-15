@@ -1,5 +1,5 @@
 variable "instances" {
-  default = ["mongodb", "rabbitmq"]
+  default = ["mongodb", "rabbitmq","frontend"]
 }
 
 variable "domain_name" {
