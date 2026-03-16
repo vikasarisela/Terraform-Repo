@@ -1,6 +1,5 @@
 resource "aws_instance" "terraform" {
-    ami = data.aws_ami.ami_data.id
-
+    ami = "ami-09c813fb71547fc4f"
     instance_type = "t3.micro"
     vpc_security_group_ids = [aws_security_group.allow_all.id]
     tags = {
