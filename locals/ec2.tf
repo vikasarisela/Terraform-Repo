@@ -1,13 +1,13 @@
 resource "aws_instance" "terraform" {
-     ami  = var.ami_id
+     ami  = local.ami_id
    # instance_type = var.instance_type
-    instance_type = "t3.micro"
+    instance_type = local.instance_type 
     vpc_security_group_ids = [aws_security_group.allow_all.id]
-    tags = var.ec2_tags
+    tags = local.ec2_tags
 }
 
 resource "aws_security_group" "allow_all" { 
-  name   = var.sg_name
+  name   = "${local.common_name}-allow-all"
 
   egress {
     from_port        = var.egress_from_port # from port 0 to to port 0 means all ports
@@ -23,8 +23,5 @@ resource "aws_security_group" "allow_all" {
     cidr_blocks      = var.cidr # internet
   }
 
-  tags = {
-    Name = "allow-all"
-  }
-
+  tags = local.ec2_tags
 }
