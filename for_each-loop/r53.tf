@@ -16,9 +16,15 @@
 #   allow_overwrite = true
 # }
 
+#output 
+# {
+#   mongodb = {}
+#   redis = {}
+# }
+
 resource "aws_route53_record" "roboshop" {
-  for_each = aws_instance.terraform
-   zone_id = var.zone_id
+  for_each = aws_instance.terraform   # output • for_each → map of objects (nested dictionary)
+  zone_id = var.zone_id
   name    = "${each.key}.${var.domain_name}"
   type    = "A"
   ttl     = 1

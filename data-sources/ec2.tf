@@ -32,6 +32,7 @@ resource "aws_security_group" "allow_all" {
 
 }
 
+# to get information about specific instance 
 
 # data "aws_instance" "foo" {
 #   instance_id = "i-instanceid"

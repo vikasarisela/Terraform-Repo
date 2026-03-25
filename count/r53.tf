@@ -27,3 +27,7 @@ resource "aws_route53_record" "roboshop" {
 
   allow_overwrite = true
 }
+# aws_instance.terraform[count.index].public_ip is a computed attribute, which means:
+
+# 👉 It is NOT known before Terraform creates the EC2 instance
+# 👉 It becomes available only after terraform apply

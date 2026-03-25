@@ -15,7 +15,8 @@ variable "instances" {
 #       ami = "ami-di"
 #      }
 #    }
-#    each.value.instance_type
+#    each.value.instance_type  --> t2.micro
+    # each.key  --> "mongodb"
 # }
 }
 variable "domain_name" {

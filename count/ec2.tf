@@ -8,6 +8,7 @@ resource "aws_instance" "terraform" {
         Terraform = "true"
     }
 }
+# Output is list of dictonaries
 
 resource "aws_security_group" "allow_all" {
   name   = "allow-all"
