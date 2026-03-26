@@ -6,10 +6,10 @@ resource "aws_instance" "terraform" {
         Name = "terraform-1"
         Terraform = "true"
     }
-
+   # if you want to give private ip to ansible 
     provisioner "local-exec"{
       command = "echo ${self.private_ip} > inventory"
-      on_failure = continue   # if local -exec fails continue to execute
+      on_failure = continue   # if local -exec fails continue to execute if you dont use on_failure the total resource block fails
     }
 
     provisioner "local-exec"{
@@ -23,6 +23,7 @@ resource "aws_instance" "terraform" {
       password = "DevOps321"
       host     = self.public_ip
     }
+    # self used to refer all the arguments in the current resource
 
     provisioner "remote-exec" {
       inline = [

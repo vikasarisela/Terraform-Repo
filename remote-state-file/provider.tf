@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket = "remote-state-86s-vikas"
-    key    = "remote-state-demo"
+    key    = "remote-state-demo"   # state file creates in s3 bucket 
     region = "us-east-1"
     use_lockfile = true
     encrypt = true
