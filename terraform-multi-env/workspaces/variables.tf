@@ -6,7 +6,11 @@ variable "common_tags" {
 }
 
 variable "environment" {
-    type = string
+    type = map
+    default = {
+    dev = "dev"
+    prod = "prod"
+   } 
  }
 
 variable "project"{
@@ -17,11 +21,15 @@ variable "project"{
 
 variable "ami_id" {
     type = string
-    default     = "ami-09c813fb71547fc4f"
+    default     = "ami-0220d79f3f480ecf5"
 }
 
 variable "instance_type" {
-    type = string
+    type = map
+   default = {
+    dev = "t3.micro"
+    prod = "t3.small"
+   } 
 }
 
 

@@ -18,3 +18,11 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
+
+# remote-state-86s-vikas
+# │
+# ├── worskpace-demo                ← default workspace
+# │
+# └── env:
+#     ├── dev/worskpace-demo        ← dev workspace
+#     └── prod/worskpace-demo       ← prod workspace
