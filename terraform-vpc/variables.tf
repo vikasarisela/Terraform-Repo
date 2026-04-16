@@ -14,7 +14,10 @@ variable "vpc_tags" {
   type = map
   default = {}
 }
-
+variable "peering_tags" {
+  type = map
+  default = {}
+}
 variable "igw_tags" {
   type = map
   default = {}
@@ -71,4 +74,9 @@ variable "eip_tags" {
 variable "nat_gateway_tags" {
   type = map
   default = {}
+}
+
+variable "is_peering_required" {
+  type = bool
+  default = true
 }

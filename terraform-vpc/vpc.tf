@@ -35,7 +35,7 @@ resource "aws_subnet" "public" {
     var.subnet_public_tags,
     local.common_tags,
     {
-        Name = "${local.common_name_suffix}-${data.aws_availability_zones.available.names[count.index]}"
+        Name = "${local.common_name_suffix}-public-${data.aws_availability_zones.available.names[count.index]}"
     }
   )
 }
@@ -49,7 +49,7 @@ resource "aws_subnet" "private" {
     var.subnet_private_tags,
     local.common_tags,
     {
-        Name = "${local.common_name_suffix}-${data.aws_availability_zones.available.names[count.index]}"
+        Name = "${local.common_name_suffix}-private-${data.aws_availability_zones.available.names[count.index]}"
     }
   )
 }
