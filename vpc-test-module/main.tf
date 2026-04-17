@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "../terraform-vpc"
+  source = "git::https://github.com/vikasarisela/terraform-vpc.git?ref=main"
   cidr_block = "10.0.0.0/16"
   project_name = "Roboshop"
   environment = "dev"
@@ -13,3 +13,8 @@ module "vpc" {
 # output "azs" {
 #   value = data.aws_availability_zones.available.names
 # }
+
+
+
+# terraform init -upgrade 
+# to get the latest from module 
